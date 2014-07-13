@@ -1,3 +1,6 @@
+(setq emacs-load-start-time (current-time))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+
 (require 'package)
 (add-to-list 'package-archives
   '("marmalade" .
@@ -44,6 +47,7 @@
 (require 'org)
 (add-to-list  'auto-mode-alist '("\\.org$" . org-mode))
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
+(add-hook 'org-mode-hook 'flyspell-mode)
 
 (setq 
  backup-by-copying t
@@ -54,33 +58,14 @@
  kept-old-versions 2
  version-control t)
 
-;;; AucTex stuff
-(require 'tex)
-(TeX-global-PDF-mode t)
 
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
+(require 'init-auctex)
+(require 'init-org)
 
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-AUCTeX t)
-
-(setq TeX-PDF-mode t)
-
-(setq Tex-output-view-style
-      (quote
-       (("^pdf$" "." "okular %o"))))
-
-;(define-abbrev-table 'TeX-mode-abbrev-table (make-abbrev-table))
-;(add-hook 'LaTeX-mode-hook (lambda ()
-;			   (setq abbrev-mode t)
-;			   (setq local-abbrev-table TeX-mode-abbrev-table)))
-
-;                                         (active inactive)
+(when (require 'time-date nil t)
+   (message "Emacs startup time: %d seconds."
+    (time-to-seconds (time-since emacs-load-start-time)))
+   )
 
 ;; This stuff sets the background to transparent
 (add-to-list 'default-frame-alist '(background-color . "black"))
@@ -108,6 +93,8 @@
  '(main-line-color1 "#29282E")
  '(main-line-color2 "#292A24")
  '(main-line-separator-style (quote chamfer))
+ '(markdown-enable-math t)
+ '(minimap-window-location (quote left))
  '(org-agenda-files (quote ("~/org/research.org" "~/org/personal.org")))
  '(powerline-color1 "#29282E")
  '(powerline-color2 "#292A24")
