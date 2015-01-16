@@ -1,18 +1,25 @@
 (setq emacs-load-start-time (current-time))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/init"))
 
 (require 'package)
 (add-to-list 'package-archives
-  '("marmalade" .
-    "http://marmalade-repo.org/packages/"))
+  '("marmalade" .  "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.org/packages/") t)
+
 (package-initialize)
 
 (setq autoload-dir (expand-file-name "autoload.d" user-emacs-directory))
 (add-to-list 'load-path autoload-dir)
 
+(require 'init-helm)
+
 (require 'better-defaults)
 
 (require 'git-gutter-fringe)
+
+(require 'epa-file)
+(epa-file-enable)
 
 (autoload 'f90-mode "f90" "Fortran 90 mode" t)
 (add-hook 'f90-mode-hook 'my-f90-mode-hook)
@@ -81,15 +88,27 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Linum-format "%5i ")
- '(ansi-color-names-vector ["#fdf6e3" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#657b83"])
- '(ansi-term-color-vector [unspecified "#081724" "#ff694d" "#68f6cb" "#fffe4e" "#bad6e2" "#afc0fd" "#d2f1ff" "#d3f9ee"])
+ '(ansi-color-names-vector
+   ["#fdf6e3" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#657b83"])
+ '(ansi-term-color-vector
+   [unspecified "#081724" "#ff694d" "#68f6cb" "#fffe4e" "#bad6e2" "#afc0fd" "#d2f1ff" "#d3f9ee"])
+ '(column-number-mode t)
  '(fci-rule-character-color "#202020")
  '(fci-rule-color "#eee8d5")
  '(fill-column 130)
  '(font-use-system-font t)
  '(fringe-mode 10 nil (fringe))
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
- '(highlight-tail-colors (quote (("#eee8d5" . 0) ("#B4C342" . 20) ("#69CABF" . 30) ("#69B7F0" . 50) ("#DEB542" . 60) ("#F2804F" . 70) ("#F771AC" . 85) ("#eee8d5" . 100))))
+ '(highlight-tail-colors
+   (quote
+    (("#eee8d5" . 0)
+     ("#B4C342" . 20)
+     ("#69CABF" . 30)
+     ("#69B7F0" . 50)
+     ("#DEB542" . 60)
+     ("#F2804F" . 70)
+     ("#F771AC" . 85)
+     ("#eee8d5" . 100))))
  '(main-line-color1 "#29282E")
  '(main-line-color2 "#292A24")
  '(main-line-separator-style (quote chamfer))
@@ -101,7 +120,26 @@
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(vc-annotate-background "#586e75")
- '(vc-annotate-color-map (quote ((20 . "#990A1B") (40 . "#FF6E64") (60 . "#cb4b16") (80 . "#7B6000") (100 . "#b58900") (120 . "#DEB542") (140 . "#546E00") (160 . "#859900") (180 . "#B4C342") (200 . "#3F4D91") (220 . "#6c71c4") (240 . "#9EA0E5") (260 . "#2aa198") (280 . "#69CABF") (300 . "#00629D") (320 . "#268bd2") (340 . "#69B7F0") (360 . "#d33682"))))
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#990A1B")
+     (40 . "#FF6E64")
+     (60 . "#cb4b16")
+     (80 . "#7B6000")
+     (100 . "#b58900")
+     (120 . "#DEB542")
+     (140 . "#546E00")
+     (160 . "#859900")
+     (180 . "#B4C342")
+     (200 . "#3F4D91")
+     (220 . "#6c71c4")
+     (240 . "#9EA0E5")
+     (260 . "#2aa198")
+     (280 . "#69CABF")
+     (300 . "#00629D")
+     (320 . "#268bd2")
+     (340 . "#69B7F0")
+     (360 . "#d33682"))))
  '(vc-annotate-very-old-color "#93115C"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
