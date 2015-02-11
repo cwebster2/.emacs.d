@@ -48,8 +48,22 @@
   (linum-mode 1)
   (git-gutter-mode 1))
 
+(add-hook 'python-mode-hook 'my-python-mode-hook)
+
+(defun my-python-mode-hook ()
+  (linum-mode 1)
+  (git-gutter-mode 1))
+
 ;(require 'evil)
 ;(evil-mode 1)
+
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows t
+
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main t
+ )
 
 (require 'org)
 (add-to-list  'auto-mode-alist '("\\.org$" . org-mode))
