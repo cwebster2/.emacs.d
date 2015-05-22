@@ -1,8 +1,8 @@
 ;; init-auctex.el
 ;; Casey Webster
 
-(require 'tex)
-(TeX-global-PDF-mode t)
+;(require 'tex)
+;(TeX-global-PDF-mode t)
 
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
@@ -19,7 +19,7 @@
 
 (setq Tex-output-view-style
       (quote
-       (("^pdf$" "." "okular %o"))))
+       (("^pdf$" "." "evince %o"))))
 
 ;(define-abbrev-table 'TeX-mode-abbrev-table (make-abbrev-table))
 ;(add-hook 'LaTeX-mode-hook (lambda ()

@@ -126,7 +126,6 @@
      [unspecified ,background ,red ,green ,yellow ,blue ,purple ,blue ,foreground])
    '(fill-column 128)
    '(font-use-system-font t)
-   '(org-agenda-files (quote (quote ("~/org/research.org" "~/org/personal.org"))))
    '(tool-bar-mode nil)
    '(fringe-mode 10)
    '(Linum-format "%7i ")
