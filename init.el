@@ -1,5 +1,11 @@
 (setq emacs-load-start-time (current-time))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/init"))
+
+;(setq package-enable-at-startup nil)
+;(package-initialize)
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/init/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/themes/"))
+(add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -11,6 +17,8 @@
 
 (setq autoload-dir (expand-file-name "autoload.d" user-emacs-directory))
 (add-to-list 'load-path autoload-dir)
+
+(scroll-bar-mode -1)
 
 (require 'init-helm)
 
@@ -104,6 +112,7 @@
 
 (add-hook 'window-setup-hook 'on-after-init)
 
+
 ;;; Auto-generated stuff below here
 
 (custom-set-variables
@@ -111,17 +120,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(Linum-format "%5i ")
- '(ansi-color-names-vector
-   ["#fdf6e3" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#657b83"])
- '(ansi-term-color-vector
-   [unspecified "#081724" "#ff694d" "#68f6cb" "#fffe4e" "#bad6e2" "#afc0fd" "#d2f1ff" "#d3f9ee"])
  '(column-number-mode t)
- '(fci-rule-character-color "#202020")
- '(fci-rule-color "#eee8d5")
- '(fill-column 130)
- '(font-use-system-font t)
- '(fringe-mode 10 nil (fringe))
+ '(custom-enabled-themes (quote (Casey)))
+ '(custom-safe-themes
+   (quote
+    ("53788b9b4aeee9c9ce2c271272bfee98bb556ace653159d3b220457dcbaa7f51" "c76d01b885057834f7852702f0d9bbd8312c88eb05ea8f6ce70a57d37a593f00" "b380f6457c0402e95175404ad389360cb3d6e66597f5f69bdd8e216c087fd694" "45e385ba0de50aa8d84dc73ac4c367f1d8c978270ab4e7bdeac9d707865121ec" "febb4cb705efa4c593c8df1f75127f7a2778e8eaf6d778ad2496442921d11ce7" "e43be2fe61570b82342856caf385553ecbeaa21ddc005ddf6a8c20540a8fe005" "a5325d384eb0a51eb9434a592ea61e631835ad0a1308c110ed48a5d735b62890" "4649b267049652533e1df90b015c7dc9d612206c352eacebb174eb495b482280" "f60b41269b6487674daa2f14533e71a4ab8c99646a16ef0fb7928c9d86580704" "bd0ea0c555e2adac37984ebe499ab2e5862bd75458f6c45b4faf42ef3be1d67d" "b484408a8e65868a528f575b487bf21ef9f9423ca0e36575bfda5cb18987cf65" "68481369f066ffbbf0a9b63db91cb54ddedd4405b2cda92a0a47b5f59e8648b5" "dfee265113cf432c806dd10968ac686daba99db38cebebe0ae88f66770bc0ffc" "bf0731db5f7332d275b8ce34aba666b56bd995b8aed51cec3788303d90bf8efb" "f3cac73dbec34908b0d96ff5956ed6d35989113666f321921b38ae83df185b0e" "e0c52331434bee7ecb33970d7eec64e52ec8f153bf6907b5141f611fcf2a4479" "19f346766d1a908cef9c8c59b8cc66cbac65baa01748f51894c74be87ebf9ef3" "b23ebbf966b416b846a852d4ee56f4f834ab967421c7ee18854f12c507d8668d" default)))
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-tail-colors
    (quote
@@ -138,11 +141,8 @@
  '(main-line-separator-style (quote chamfer))
  '(markdown-enable-math t)
  '(minimap-window-location (quote left))
- '(org-agenda-files (quote ("~/org/research.org" "~/org/personal.org")))
  '(powerline-color1 "#29282E")
  '(powerline-color2 "#292A24")
- '(show-paren-mode t)
- '(tool-bar-mode nil)
  '(vc-annotate-background "#586e75")
  '(vc-annotate-color-map
    (quote
@@ -170,22 +170,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background nil :foreground "light gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
- '(font-lock-comment-face ((t (:foreground "DodgerBlue3"))))
- '(font-lock-constant-face ((t (:foreground "orange red"))))
- '(font-lock-function-name-face ((t (:foreground "cyan1"))))
- '(font-lock-keyword-face ((t (:foreground "dark orange"))))
- '(font-lock-string-face ((t (:foreground "red"))))
- '(font-lock-type-face ((t (:foreground "lawn green"))))
- '(font-lock-variable-name-face ((t (:foreground "light gray"))))
- '(font-lock-warning-face ((t (:inherit error :foreground "red" :weight extra-bold))))
- '(link ((t (:foreground "gold" :underline t))))
- '(linum ((t (:inherit (shadow default) :background "black" :foreground "DarkOrange2"))))
- '(mode-line ((t (:background "gray10" :foreground "green" :box (:line-width -1 :style released-button)))))
- '(mode-line-buffer-id ((t (:foreground "green yellow" :weight bold :height 1.0))))
- '(mode-line-inactive ((t (:inherit mode-line :background "grey10" :foreground "slate gray" :box (:line-width -1 :color "grey40") :weight light))))
- '(org-checkbox ((t (:inherit bold :foreground "RoyalBlue1"))))
- '(org-done ((t (:foreground "forest green" :weight bold))))
- '(org-todo ((t (:foreground "OrangeRed1" :weight bold))))
- '(tool-bar ((t (:background "grey75" :foreground "black" :box (:line-width 1 :style released-button))))))
+ '(default ((t (:background nil)))))
