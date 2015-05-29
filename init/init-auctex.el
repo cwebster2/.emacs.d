@@ -1,8 +1,8 @@
 ;; init-auctex.el
 ;; Casey Webster
 
-;(require 'tex)
-;(TeX-global-PDF-mode t)
+(require 'tex-site)
+(setq TeX-global-PDF-mode t)
 
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
