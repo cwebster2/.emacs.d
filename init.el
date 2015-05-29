@@ -1,3 +1,6 @@
+;;; init.el -- my emacs init file
+;;; Commentary:
+;;; Code:
 (setq emacs-load-start-time (current-time))
 
 ;(setq package-enable-at-startup nil)
@@ -56,7 +59,13 @@
   (linum-mode 1)
   (git-gutter-mode 1))
 
+(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 (defun my-python-mode-hook ()
   (linum-mode 1)
@@ -99,14 +108,16 @@
 ;; This stuff sets the background to transparent
 (add-to-list 'default-frame-alist '(background-color . "black"))
 
-(set-frame-parameter (selected-frame) 'alpha '(85 80))
-(add-to-list 'default-frame-alist '(alpha 85 80))
+(set-frame-parameter (selected-frame) 'alpha '(75 75))
+(add-to-list 'default-frame-alist '(alpha 75 75))
 
 ;; fix colors for terminal emacs
 (defun on-after-init ()
   (unless (display-graphic-p (selected-frame))
     (set-face-background 'default "unspecified-bg" (selected-frame))
     (set-background-color nil)
+    (setq-default left-fringe 10)
+    (setq linum-format "%d ")
     (menu-bar-mode -1)))
     
 
