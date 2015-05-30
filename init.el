@@ -40,7 +40,7 @@
                  ad-do-it))
              (setq custom-file "~/.emacs.d/custom-darwin.el"))
 
-(with-system linux
+(with-system gnu/linux
              (setq custom-file "~/.emacs.d/custom-linux.el"))
 
 
