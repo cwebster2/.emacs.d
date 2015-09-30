@@ -17,6 +17,8 @@
   '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
+; Allows the frame to be truly maximised, regardless of font choice
+(setq frame-resize-pixelwise t)
 
 (setq autoload-dir (expand-file-name "autoload.d" user-emacs-directory))
 (add-to-list 'load-path autoload-dir)
