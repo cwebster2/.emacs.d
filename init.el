@@ -135,16 +135,36 @@
 (add-to-list 'default-frame-alist '(alpha 75 75))
 
 ;; fix colors for terminal emacs
-(defun on-after-init ()
-  (unless (display-graphic-p (selected-frame))
-    (set-face-background 'default "unspecified-bg" (selected-frame))
+;(defun on-after-init ()
+(defun on-after-clientframe-init (&optional frame)
+  (select-frame frame)
+  (message (format "%s" window-system))
+  (message (format "%s" (display-graphic-p)))
+  (unless (display-graphic-p)
+    (set-face-background 'default nil) ; selected-frame
     (set-background-color nil)
     (setq-default left-fringe 10)
     (setq linum-format "%d ")
-    (menu-bar-mode -1)))
-    
+    (xterm-mouse-mode 1)))
+
+(defun contextual-menubar (&optional frame)
+  "Display the menubar in FRAME (default: selected frame) if on a graphical display, but hide it if in terminal."
+  (interactive)
+  (set-frame-parameter frame 'menu-bar-lines (if (display-graphic-p frame) 1 0)))
+
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default nil (selected-frame))
+    ;(set-face-background 'default "unspecified-bg" (selected-frame))
+    (set-background-color nil)
+    (setq-default left-fringe 10)
+    (setq linum-format "%d ")
+    (xterm-mouse-mode 1)))
+
 
 (add-hook 'window-setup-hook 'on-after-init)
-
+(add-hook 'after-make-frame-functions 'on-after-clientframe-init)
+(add-hook 'after-make-frame-functions 'contextual-menubar)
+(add-hook 'after-init-hook 'contextual-menubar)
 
 (load custom-file)

@@ -26,6 +26,7 @@
  '(main-line-separator-style (quote chamfer))
  '(markdown-enable-math t)
  '(minimap-window-location (quote left))
+ '(org-agenda-files (quote ("~/org/research.org")))
  '(powerline-color1 "#29282E")
  '(powerline-color2 "#292A24")
  '(vc-annotate-background "#586e75")
