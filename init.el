@@ -17,6 +17,9 @@
   '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
+
+(require 'git-commit)
+
 ; Allows the frame to be truly maximised, regardless of font choice
 (setq frame-resize-pixelwise t)
 
@@ -160,7 +163,6 @@
     (setq-default left-fringe 10)
     (setq linum-format "%d ")
     (xterm-mouse-mode 1)))
-
 
 (add-hook 'window-setup-hook 'on-after-init)
 (add-hook 'after-make-frame-functions 'on-after-clientframe-init)
