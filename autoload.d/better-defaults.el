@@ -66,6 +66,11 @@
   (global-set-key (kbd "C-M-s") 'isearch-forward)
   (global-set-key (kbd "C-M-r") 'isearch-backward)
 
+  (setq scroll-margin 5
+      scroll-conservatively 100
+      scroll-step 1)
+
+  
   (global-auto-revert-mode 1)
   (show-paren-mode 1)
   (setq-default indent-tabs-mode nil)
@@ -77,6 +82,7 @@
         save-place-file (concat user-emacs-directory "places")
         backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                  "backups")))))
+
 
 (provide 'better-defaults)
 ;;; better-defaults.el ends here
