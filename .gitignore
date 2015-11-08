@@ -1,0 +1,10 @@
+.emacs.desktop
+.emacs.desktop.lock
+auto-save-list
+backups
+elpa
+places
+projectile-bookmarks.eld
+recentf
+semanticdb
+tramp
