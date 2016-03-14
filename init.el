@@ -46,8 +46,10 @@
              (setq custom-file "~/.emacs.d/custom-darwin.el"))
 
 (with-system gnu/linux
-             (setq custom-file "~/.emacs.d/custom-linux.el"))
+  (setq custom-file "~/.emacs.d/custom-linux.el"))
 
+(with-system windows-nt
+  (setq custom-file "~/.emacs.d/custom-windows.el"))
 
 (require 'init-helm)
 
