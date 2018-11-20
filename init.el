@@ -16,7 +16,31 @@
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.org/packages/") t)
 
+(defun maybe-require-package (package &optional min-version no-refresh)
+  "Try to install PACKAGE, and return non-nil if successful.
+In the event of failure, return nil and print a warning message.
+Optionally require MIN-VERSION.  If NO-REFRESH is non-nil, the
+available package lists will not be re-downloaded in order to
+locate PACKAGE."
+  (condition-case err
+      (require-package package min-version no-refresh)
+    (error
+     (message "Couldn't install package `%s': %S" package err)
+     nil)))
+
+
+(setq package-enable-at-startup nil)
 (package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(require 'init-evil)
+(require 'init-flycheck)
 
 (require 'git-commit)
 
@@ -136,8 +160,8 @@
 ;; This stuff sets the background to transparent
 (add-to-list 'default-frame-alist '(background-color . "black"))
 
-(set-frame-parameter (selected-frame) 'alpha '(75 75))
-(add-to-list 'default-frame-alist '(alpha 75 75))
+;(set-frame-parameter (selected-frame) 'alpha '(75 75))
+;(add-to-list 'default-frame-alist '(alpha 75 75))
 
 ;; fix colors for terminal emacs
 ;(defun on-after-init ()
