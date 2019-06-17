@@ -11,7 +11,7 @@
     ("de6499d0b856efd99e789d0231c0c1920793152bc7c49345bdb1e59e984bf937" default)))
  '(package-selected-packages
    (quote
-    (rainbow-delimiters auctex helm-projectile org projectile magit helm git-gutter-fringe git-gutter-fringe+))))
+    (evil-indent-textobject evil-surround evil-leader evil evil-expat editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate rainbow-delimiters auctex helm-projectile org projectile magit helm git-gutter-fringe git-gutter-fringe+))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
